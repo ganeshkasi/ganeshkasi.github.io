@@ -1,0 +1,23 @@
+<html>
+    <head>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script>
+        function Cloud(){
+        $.ajax({
+        url: 'https://developers.onemap.sg/commonapi/search?searchVal='+$('#search').val()+'&returnGeom=N&getAddrDetails=Y',
+        success: function(result){
+            let TrueResult = JSON.stringify(result);
+           $("#myData").text(TrueResult.substring(TrueResult.indexOf('ADDRESS":"'), TrueResult.lastIndexOf('\",')).replace("SINGAPORE ", "#"+$('#unitNo').val()+" S").replace('ADDRESS":"', ""));
+           $('#search').val("");
+           $('#unitNo').val("");
+            }});
+        }
+      </script>
+    </head>
+    <body>
+        <input type="text" id='unitNo'>
+        <input type="text" id='search'>
+        <input type="button" onclick="Cloud()" value="Search Address">
+        <p id="myData"></p>
+    </body>
+</html>
