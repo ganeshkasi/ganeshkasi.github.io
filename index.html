@@ -7,7 +7,7 @@
         url: 'https://developers.onemap.sg/commonapi/search?searchVal='+$('#search').val()+'&returnGeom=N&getAddrDetails=Y',
         success: function(result){
             let TrueResult = JSON.stringify(result);
-           $("#myData").text(TrueResult.substring(TrueResult.indexOf('ADDRESS":"'), TrueResult.lastIndexOf('\",')).replace("SINGAPORE ", "#"+$('#unitNo').val()+" S").replace('ADDRESS":"', ""));
+           $("#myData").text(TrueResult.substring(TrueResult.indexOf('ADDRESS":"'), TrueResult.lastIndexOf('\",')).replace("SINGAPORE ", "#"+$('#unitNo').val()+" S").replace('ADDRESS":"', "").replace('AVENUE', "AVE").replace('STREET', "ST"));
            $('#search').val("");
            $('#unitNo').val("");
             }});
